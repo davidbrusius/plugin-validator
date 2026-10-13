@@ -37,6 +37,10 @@ func TestFilterPackages(t *testing.T) {
 	require.Equal(t, "d3-color", filteredResults.Results[0].Source.Path)
 }
 
+func TestWhitelistedPackagesIncludesBracesCVE202693687(t *testing.T) {
+	require.True(t, WhitelistedPackages["braces@3.0.3"])
+}
+
 func TestFilterGoModPackages(t *testing.T) {
 	goMod := `module example.com/plugin
 
